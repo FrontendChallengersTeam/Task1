@@ -1,0 +1,52 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link rel="stylesheet" href="css/all.min.css">          <!-- Fontawsome CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/styles.css">           <!-- My Styles CSS -->
+      
+        <title>Bookmarker</title>
+</head>
+
+  <body>
+
+        <header class="container">
+                <h1 class="py-5 px-4">Bookmarker</h1>
+        </header>
+
+
+        <main class="container">
+            <div class=" text-center bg-main m-4 px-3 py-4">
+
+                    <h2 class="my-3">Bookmark your favorite sites</h2>
+
+                    <label class="my-3">Site Name</label>
+                    <input  id="siteNameInput" type="text" placeholder="Bookmark Name" class="form-control w_80" required>
+
+                    <label class="my-3">Site URL</label>
+                    <input id="siteUrlInput" type="text" placeholder="website URL" class="form-control w_80" required>
+
+                    <button onclick="addSite()"  class="btn btn-primary px-3 py-2 my-3">Submit</button>
+            </div>
+        </main>
+
+
+        <section  id="addedSites" class="container" >
+        </section>
+
+
+        <footer class="container">
+                <p class="p-4">&copy; 2019 Bookmarker Inc.</p>
+        </footer>
+  
+	    <!-- Optional JavaScript -->
+        <script src="js/index.js"> </script>
+  </body>
+</html>

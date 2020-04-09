@@ -1,0 +1,88 @@
+*
+{
+     box-sizing: border-box;
+}
+
+html
+{
+     font-size: 16px;
+}
+
+body 
+{
+     font-family: arial;
+ }
+
+
+header h1
+{
+    font-size: 1.8rem ;
+    font-weight: bolder;
+    color: #AAA;
+    border-bottom: 1px solid #999;
+}
+
+.bg-main
+{
+     background-color: #EEE !important;
+}
+
+main h2
+{
+     font-size: 1.5em !important ;
+     font-weight: bold;
+}
+
+main label
+{
+    font-size: 1 rem !important;
+    font-weight: bold;
+    color: #333;
+}
+
+.w_80{ width: 80% ; }
+
+.w_30{ width: 30% ; }
+
+main input
+{
+    border-radius: 5px ;
+    border: 1px solid #DDD;
+    padding: 5px ;
+    margin: auto;
+    font-size: 15px;
+    max-height: 2em;
+}
+
+
+footer p
+{
+    font-size: 0.9rem !important;
+    color: #AAA;
+    font-weight: bold;
+    border-top: 1px solid #999;
+}
+
+
+/* section 
+{
+     margin: 0.65rem 0rem ;
+} */
+
+
+section  .siteSection
+{
+     padding: 1.25rem 0rem ;
+     background-image: linear-gradient(#EEE,#FFF);
+}
+
+.siteSection h3
+{
+     font-size: 1.5rem !important;
+     color: #333;
+}
+
+section  .siteSection button a
+{
+     text-decoration: none;
+}
