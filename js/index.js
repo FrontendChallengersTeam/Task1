@@ -150,7 +150,7 @@ function startUpdate(index)
 
     if(nonEmptyInput == true)
     {
-        var siteCheck = checkInList(site.name,site.url) ; 
+        var siteCheck = Update_checkInList(index,site.name,site.url) ; 
         console.log(siteCheck) ;
 
         if(siteCheck == false)
@@ -214,7 +214,7 @@ function nonEmptyInputCheck(siteName,siteUrl)
 
 
 /*
-    displaySites function  --> used to display data aboute the added sites 
+    checkInList function  --> used to check the new entered site info if it entered before or not.
 */
 function checkInList(siteName,siteUrl) 
 {
@@ -263,3 +263,60 @@ function checkInList(siteName,siteUrl)
     }
 
 }
+
+
+
+/*
+    Update_checkInList function  --> used to check the entered updated site doesn't entered before.
+*/
+function Update_checkInList(index,siteName,siteUrl) 
+{
+    var existValue ;
+
+    if(localStorage.getItem("mySites") == null)
+    {
+        sitesList = [];
+        return false ;
+    }
+    else
+    {
+        sitesList = JSON.parse( localStorage.getItem("mySites") );
+
+        for (var i = 0; i < sitesList.length; i++) 
+        {
+            if(i != index)
+            {
+                existValue = sitesList[i] ;
+                console.log(existValue);
+
+                if( (existValue.name == siteName) || (existValue.url == siteUrl))
+                {
+                    if( (existValue.name == siteName) && (existValue.url == siteUrl) )
+                    {
+                        window.alert("Sorry, the entered site name and url are already entered before.");
+                    }
+                    else if(existValue.name == siteName)
+                    {
+                        window.alert("Sorry, the entered site name is already entered before.");
+                    }
+                    else if(existValue.url == siteUrl)
+                    {
+                        window.alert("Sorry, the entered site url is already entered before.");
+                    }
+                    return true;
+                }
+                else
+                {
+                    /* site did't added before.*/
+                }
+            }
+            else
+            {
+                /* go tothe next iteration */
+            }
+        }    
+        return false ;
+    }
+
+}
+
