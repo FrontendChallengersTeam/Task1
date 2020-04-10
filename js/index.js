@@ -51,3 +51,45 @@ function displaySites()
     }
 
 }
+
+
+/*
+    clearForm function  --> used to clear the input fields. 
+*/
+function clearForm() 
+{
+    Site_Name_input.value = "" ;
+    Site_Url_input.value = "" ;
+}
+
+
+/*
+    addSite function  --> used to add site to the bookmaker list. 
+*/
+function addSite()
+{
+    var site = 
+    {
+        name: Site_Name_input.value ,
+        url: Site_Url_input.value  
+    }
+
+    var siteCheck = checkInList() ; 
+
+    console.log(siteCheck) ;
+
+    if(siteCheck == false)
+    {
+        sitesList.push(site); 
+
+        localStorage.setItem("mySites", JSON.stringify(sitesList) );
+
+        displaySites();
+        clearForm();
+    }
+    else
+    {
+        /* site not added*/
+    }
+    
+}
