@@ -120,3 +120,88 @@ function updateSite (index)
 
     document.getElementById('S'+index).style =  "display: block" ;
 }
+
+
+
+/*
+    startUpdate function  --> used to update Bookmarker site data. 
+*/
+function startUpdate(index)
+{
+    var site_name ;
+    var site_url ;
+    var site ;
+
+    sitesList = JSON.parse( localStorage.getItem("mySites") );
+
+    site_name = document.getElementById('S'+index+'NameInput').value ;
+    site_url = document.getElementById('S'+ index+'UrlInput').value ;
+
+    site = { name: site_name , url: site_url } ;
+
+
+    var nonEmptyInput = nonEmptyInputCheck(site.name,site.url);
+
+    if(nonEmptyInput == true)
+    {
+        var siteCheck = checkInList(site.name,site.url) ; 
+        console.log(siteCheck) ;
+
+        if(siteCheck == false)
+        {
+            sitesList[index] = site ; 
+
+            localStorage.setItem("mySites", JSON.stringify(sitesList) );
+
+            document.getElementById('S'+index).style =  "display: none" ;
+
+            displaySites() ;
+        }
+        else
+        {
+            /* site not added*/
+        }
+
+    }
+    else if(nonEmptyInput == false)
+    {
+        /* site not added as not complete adding the all required info*/
+    }
+}
+
+
+/*
+    cancelUpdate function  --> used to cancel the update request for Bookmarker site. 
+*/
+function cancelUpdate(index)
+{
+    document.getElementById('S'+index).style =  "display: none" ;
+}
+
+
+/*
+    nonEmptyInputCheck function  --> used to check if the input fields have a input data or empty.
+*/
+function nonEmptyInputCheck(siteName,siteUrl)
+{
+    if( (siteName == "") || ( siteUrl == "") )
+    {
+        if( (siteName == "") && ( siteUrl == "") ) 
+        { 
+            window.alert("Please enter site name and site url."); 
+        }
+        else if(siteName == "")
+        {
+              window.alert("Please enter site name."); 
+        }
+        else if( siteUrl == "")
+        { 
+            window.alert("Please enter site url."); 
+        }
+        return false ;
+    }
+    else
+    {
+        return true ;
+    }
+}
