@@ -93,3 +93,30 @@ function addSite()
     }
     
 }
+
+
+/*
+    deleteSite function  --> used to delete the Bookmarker site. 
+*/
+function deleteSite (index)
+{
+    sitesList.splice(index,1);
+    localStorage.setItem("mySites",JSON.stringify(sitesList)) ;
+    displaySites();
+}
+
+
+/*
+    updateSite function  --> used to determine specific Bookmarker site and show the fields to edit. 
+*/
+function updateSite (index)
+{
+    document.getElementById('S'+index).innerHTML = '<label class="my-3 ml-3">Site Name: </label>' +
+                                                      '<input  id="S'+index+'NameInput" type="text"  value="'+sitesList[index].name +'"  placeholder="Bookmark Name" class="form-control d-inline-block w_30 ml-2">' +
+                                                      '<label class="ml-4">Site URL: </label>' +
+                                                      '<input id="S'+index+'UrlInput" type="email"  value="'+sitesList[index].url +'"  placeholder="website URL" class="form-control d-inline-block w_30 ml-2">' +
+                                                      '<button class="btn btn-info p2- py-2 ml-3" onclick="startUpdate('+index+')">Update</button>' +
+                                                      '<button class="btn btn-danger px- py-2 mx-2" onclick="cancelUpdate('+index+')">Cancel</button>' ;
+
+    document.getElementById('S'+index).style =  "display: block" ;
+}
