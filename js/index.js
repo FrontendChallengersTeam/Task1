@@ -205,3 +205,55 @@ function nonEmptyInputCheck(siteName,siteUrl)
         return true ;
     }
 }
+
+
+/*
+    displaySites function  --> used to display data aboute the added sites 
+*/
+function checkInList(siteName,siteUrl) 
+{
+    var enteredValue = {name: siteName, url: siteUrl } ;
+    var existValue ;
+
+    if(localStorage.getItem("mySites") == null)
+    {
+        sitesList = [];
+        return false ;
+    }
+    else
+    {
+        sitesList = JSON.parse( localStorage.getItem("mySites") );
+
+        for (var i = 0; i < sitesList.length; i++) 
+        {
+            existValue = sitesList[i] ;
+            console.log(existValue);
+
+            if( (existValue.name == enteredValue.name) || (existValue.url == enteredValue.url))
+            {
+                if( (existValue.name == enteredValue.name) && (existValue.url == enteredValue.url) )
+                {
+                    window.alert("Sorry, the entered site name and url are already entered before.");
+                    return true;
+                }
+                else if((existValue.name == enteredValue.name))
+                {
+                    window.alert("Sorry, the entered site name is already entered before.");
+                    return true;
+                }
+                else if((existValue.url == enteredValue.url))
+                {
+                    window.alert("Sorry, the entered site url is already entered before.");
+                    return true;
+                }
+            }
+            else
+            {
+                /* site did't added before.*/
+            }
+        }    
+        return false ;
+        
+    }
+
+}
