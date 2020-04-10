@@ -63,35 +63,41 @@ function clearForm()
 }
 
 
+
 /*
     addSite function  --> used to add site to the bookmaker list. 
 */
 function addSite()
 {
-    var site = 
+    var site = {    name: Site_Name_input.value ,
+                    url: Site_Url_input.value  
+               }
+
+    var nonEmptyInput = nonEmptyInputCheck(site.name,site.url);
+
+    if(nonEmptyInput == true)
     {
-        name: Site_Name_input.value ,
-        url: Site_Url_input.value  
+        var siteCheck = checkInList(site.name,site.url) ; 
+        console.log(siteCheck) ;
+
+        if(siteCheck == false)
+        {
+            sitesList.push(site); 
+            localStorage.setItem("mySites", JSON.stringify(sitesList) );
+            displaySites();
+            clearForm();
+        }
+        else
+        {
+            /* site not added*/
+        }
+
+    }
+    else if(nonEmptyInput == false)
+    {
+        /* site not added as not complete adding the all required info*/
     }
 
-    var siteCheck = checkInList() ; 
-
-    console.log(siteCheck) ;
-
-    if(siteCheck == false)
-    {
-        sitesList.push(site); 
-
-        localStorage.setItem("mySites", JSON.stringify(sitesList) );
-
-        displaySites();
-        clearForm();
-    }
-    else
-    {
-        /* site not added*/
-    }
-    
 }
 
 
